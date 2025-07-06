@@ -74,3 +74,15 @@ export interface ChatMessage {
     text: string | React.ReactNode;
     isLoading?: boolean;
 }
+
+export interface RecommendedJob {
+  type: 'job';
+  reason: string;
+  details: Job;
+}
+export interface RecommendedCertification {
+  type: 'certification';
+  reason: string;
+  details: Certification;
+}
+export type Recommendation = RecommendedJob | RecommendedCertification;

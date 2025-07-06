@@ -30,6 +30,10 @@ const Navbar: React.FC = () => {
     background: 'linear-gradient(to right, #577cff, #3b5ef9)',
     color: 'white',
   };
+  
+  const activeMatchmakingStyle = {
+    color: '#ef4444', // red-500
+  };
 
   return (
     <nav className="bg-white/80 dark:bg-navy-950/80 backdrop-blur-sm sticky top-0 z-50 shadow-md dark:shadow-navy-800/50">
@@ -58,6 +62,18 @@ const Navbar: React.FC = () => {
           
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
+             {user?.role === UserRole.CLIENT && (
+              <NavLink 
+                to="/matchmaking" 
+                title="Matchmaking" 
+                className="text-gray-500 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+                style={({ isActive }) => isActive ? activeMatchmakingStyle : {}}
+               >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </NavLink>
+            )}
             <div className="relative cursor-pointer" onClick={() => navigate('/checkout')}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                 {cartItemCount > 0 && (
@@ -83,7 +99,19 @@ const Navbar: React.FC = () => {
           </div>
 
           <div className="md:hidden flex items-center">
-            <ThemeToggle />
+             <ThemeToggle />
+             {user?.role === UserRole.CLIENT && (
+              <NavLink 
+                to="/matchmaking" 
+                title="Matchmaking" 
+                className="ml-4 text-gray-500 dark:text-gray-400"
+                style={({ isActive }) => isActive ? activeMatchmakingStyle : {}}
+              >
+                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </NavLink>
+            )}
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="ml-4 inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-navy-800 focus:outline-none">
               <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                 {isMobileMenuOpen ? (
