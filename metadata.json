@@ -1,0 +1,7 @@
+{
+  "name": "I-CAN: Information Career and Academic Network",
+  "description": "A comprehensive platform for career development, offering a job portal, professional certifications, career guidance via AI chatbot, and a community forum.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
